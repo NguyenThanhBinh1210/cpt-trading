@@ -119,6 +119,7 @@ const Mine = () => {
   const universal = [
     {
       label: 'Service',
+      to: '/service',
       icon: (
         <svg width='18' height='18' viewBox='0 0 24 24' fill='none' aria-hidden='true'>
           <path d='M4 6h16v10a2 2 0 0 1-2 2H8l-4 3V6Z' stroke='currentColor' strokeWidth='1.6' strokeLinejoin='round' />

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import aboutImage from '~/assets/phone-demof94b84d4.png'
 import homeBanner from '~/assets/home-banner7a91a485.png'
 import btcIcon from '~/assets/bitcoin.png'
@@ -7,6 +8,7 @@ const Home = () => {
   const quickActions = [
     {
       label: 'Service',
+      to: '/service',
       icon: (
         <svg width='22' height='22' viewBox='0 0 24 24' fill='none' aria-hidden='true'>
           <path
@@ -21,6 +23,7 @@ const Home = () => {
     },
     {
       label: 'Verified',
+      to: '/verified',
       icon: (
         <svg width='22' height='22' viewBox='0 0 24 24' fill='none' aria-hidden='true'>
           <circle cx='12' cy='12' r='9' stroke='currentColor' strokeWidth='1.6' />
@@ -36,6 +39,7 @@ const Home = () => {
     },
     {
       label: 'Recharge',
+      to: '/recharge',
       icon: (
         <svg width='22' height='22' viewBox='0 0 24 24' fill='none' aria-hidden='true'>
           <rect x='4' y='6' width='16' height='12' rx='2.5' stroke='currentColor' strokeWidth='1.6' />
@@ -60,6 +64,7 @@ const Home = () => {
     },
     {
       label: 'Loan',
+      to: '/loan',
       icon: (
         <svg width='22' height='22' viewBox='0 0 24 24' fill='none' aria-hidden='true'>
           <circle cx='12' cy='12' r='9' stroke='currentColor' strokeWidth='1.6' />
@@ -98,15 +103,31 @@ const Home = () => {
       <img src={homeBanner} alt='home banner' className='' />
 
       <section className='grid grid-cols-5 gap-2 text-center text-[11px] text-[#cbd5e1]'>
-        {quickActions.map((item) => (
-          <div key={item.label} className='flex flex-col items-center gap-2'>
-            <div className='flex h-11 w-11 items-center justify-center rounded-full bg-[#2a2a2a] text-[#a6f36a]'>
-              {item.icon}
+        {quickActions.map((item) => {
+          const content = (
+            <>
+              <div className='flex h-11 w-11 items-center justify-center rounded-full bg-[#2a2a2a] text-[#a6f36a]'>
+                {item.icon}
+              </div>
+              <span className='leading-tight'>{item.label}</span>
+              {item.label === 'Regulatory' && <span className='-mt-2 text-[10px]'>Information</span>}
+            </>
+          )
+
+          if (item.to) {
+            return (
+              <Link key={item.label} to={item.to} className='flex flex-col items-center gap-2'>
+                {content}
+              </Link>
+            )
+          }
+
+          return (
+            <div key={item.label} className='flex flex-col items-center gap-2'>
+              {content}
             </div>
-            <span className='leading-tight'>{item.label}</span>
-            {item.label === 'Regulatory' && <span className='-mt-2 text-[10px]'>Information</span>}
-          </div>
-        ))}
+          )
+        })}
       </section>
 
       <section className=' overflow-x-auto pb-2 pr-4'>

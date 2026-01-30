@@ -30,6 +30,9 @@ import WithdrawList from '~/pages/WithdrawList'
 import InviteFriends from '~/pages/InviteFriends'
 import OrderRecord from '~/pages/OrderRecord'
 import CoinCommission from '~/pages/CoinCommission'
+import Verified from '~/pages/Verified'
+import Loan from '~/pages/Loan'
+import Service from '~/pages/Service'
 
 const useRouteElements = () => {
   const routeElements = useRoutes([
@@ -64,6 +67,28 @@ const useRouteElements = () => {
         <HomeLayout showHeader={false}>
           <Contract />
         </HomeLayout>
+      )
+    },
+    {
+      path: '/verified',
+      element: (
+        <HomeLayout showHeader={false}>
+          <Verified />
+        </HomeLayout>
+      )
+    },
+    {
+      path: '/loan',
+      element: (
+        <HomeLayout showHeader={false}>
+          <Loan />
+        </HomeLayout>
+      )
+    },
+    {
+      path: '/service',
+      element: (
+        <Service />
       )
     },
     {
